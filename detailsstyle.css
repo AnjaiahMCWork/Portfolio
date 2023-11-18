@@ -1,0 +1,57 @@
+/* styles.css */
+
+body {
+    background-color: black;
+    color: #ff004f;
+    font-family: Arial, sans-serif; /* Change the font-family as needed */
+    margin: 0;
+    padding: 0;
+}
+
+#videoTitle {
+    text-align: center;
+    padding: 10px;
+    font-size: 80px;
+}
+
+#videoPlayer {
+    width: 100%;
+    height: auto;
+    max-width: 80%; /* Adjust the maximum width as needed */
+    margin: 20px auto;
+    display: block;
+    border: 5px solid white;
+}
+
+/* Customize scroll behavior */
+body {
+    scroll-behavior: smooth;
+}
+
+/* Add more styles as needed */
+
+/* Styling for video summary */
+p{
+    width: 100%;
+    height: auto;
+    max-width: 80%; /* Adjust the maximum width as needed */
+    margin: 20px auto;
+    color: #00ff00;
+    font-size: 18px;
+} 
+
+/* Styling for key points*/
+ul{
+    width: 100%;
+    height: auto;
+    max-width: 80%; /* Adjust the maximum width as needed */
+    margin: 20px auto;
+    list-style-type: square;
+    color: #fff;
+    
+}
+
+ul li{
+    font-size: 16px;
+    margin-bottom: 10px;
+}

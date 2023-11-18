@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Details Page</title>
+    <link rel="stylesheet" href="detailsstyle.css">
+</head>
+<body>
+    <h1 id="videoTitle">Details Page</h1>
+
+    <video id="videoPlayer" width="640" height="360" controls>
+        Your browser does not support the video tag.
+    </video>
+
+    <script>
+
+        //Example data structures associating video names with summary and key points
+        const videoData = {
+            AncientAdventure: {
+                summary: "This video showcases an Ancient Adventure Game  with designed realistic landscapes for an immersive player experience, developed AI-controlled enemies with adaptive behaviors, integrated strategic pickups for enhanced player interaction, applied Unreal Engine 5 and C++ for captivating visual effects.",
+                keyPoints: ["Dynamic Melee Weapon Game - Created a game with a dynamic melee weapon system, likely involving character controllers, animations, and hit detection for melee attacks.","Realistic landscapes - Designed realistic landscapes to enhance player immersion, potentially utilizing Unreal Engine 5's advanced features for realistic environments.", "AI-Controlled Enemies with Adaptive Behaviors - Developed AI-controlled enemies with adaptive behaviors, likely involving behavior trees and controllers to create a dynamic and challenging experience for players.", "Strategic Pickups - Integrated strategic pickups to provide players with items or power-ups, encouraging strategic decisions and interactions within the game.","Unreal Engine 5 and C++ for Captivating Visual Effects - Applied Unreal Engine 5 for its advanced graphical capabilities, Leveraged C++ for implementing gameplay mechanics, system interactions, and custom features and Implemented captivating visual effects using Unreal Engine 5's capabilities, which could include particle systems, dynamic lighting, and other graphical enhancements."]
+            },
+            Shooter: {
+                summary: "This video showcases Shooter Game with emphasizing realistic shooter mechanics and diverse weaponry, developed a variety of weapons and ammo types, incorporating strategic pickups with interpolating curves for smooth player interactions, developed an innovative reloading system and implemented glow effects using curves for visual enhancement, implemented footstep sounds based on surface type for heightened realism, designed multiple playable characters and diverse enemy AI behaviors through a behavior tree structure, created an engaging level environment using ruins meshes, featuring multiple enemies for a challenging gameplay experience.",
+                keyPoints: ["Dynamic Shooter Game - Utilized Unreal Engine 5 to develop a dynamic shooter game.","Realistic Shooter Mechanics and Diverse Weaponry - Emphasized realistic shooter mechanics for an immersive gaming experience and implemented a variety of weapons and ammo types to diversify gameplay.", "Strategic Pickups with Interpolating Curves - Incorporated strategic pickups for players with smooth interactions using interpolating curves.", "Innovative Reloading System - Developed an innovative reloading system for added realism and gameplay depth.","Glow Effects Using Curves - Implemented glow effects using curves for visual enhancement, enhancing the overall aesthetics of the game.","Footstep Sounds Based on Surface Type - Enhanced realism by implementing footstep sounds that vary based on the surface type the player character is walking on.","Multiple Playable Characters - Designed and implemented multiple playable characters, providing players with diverse options.","Diverse Enemy AI Behaviors Using Behavior Tree - Implemented diverse enemy AI behaviors using a behavior tree structure, adding depth and challenge to the gameplay.","Engaging Level Environment with Ruins Meshes - Created an engaging level environment using ruins meshes to enhance the visual appeal and atmosphere of the game."] 
+            }
+
+            //Add more videos and their details as needed
+        }
+
+        //function to get the value of a query parameter from the URL
+        function getQueryParam(param){
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        } 
+
+        //function to change the video based on the query parameter
+        function changeVideo(){
+            const videoPlayer = document.getElementById('videoPlayer');
+            const videoTitle = document.getElementById('videoTitle');
+
+            //get the video name from the query parameter
+            const videoName = getQueryParam('video');
+
+            //set video source based on the video name
+            const videoSource =  videoName + '.mp4';
+            videoPlayer.src = videoSource;
+
+            //set the video title based on the video name
+            videoTitle.textContent = videoName.replace('_','');//Replace the underscores with spaces
+
+            //populate video summary and key points
+            const videoDetails = videoData[videoName];
+            if (videoDetails) {
+
+                //create and append <p> for video summary
+                const summaryParagraph = document.createElement('p');
+                summaryParagraph.textContent = videoDetails.summary;
+                document.body.appendChild(summaryParagraph);
+
+                 //create and append <ul> for key points
+                const keyPointsList = document.createElement('ul');
+                videoDetails.keyPoints.forEach(point => {
+                    const li = document.createElement('li');
+                    li.textContent = point;
+                    keyPointsList.appendChild(li);
+                });
+                document.body.appendChild(keyPointsList);
+            
+            }
+        }
+
+        //call the changeVideo function when pageloads
+        window.onload = changeVideo;
+
+
+    </script>
+
+</body>
+</html>
