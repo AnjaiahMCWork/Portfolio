@@ -44,18 +44,6 @@ function App() {
     {
       icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/csharp/csharp-original.svg",
       name: "C#"
-    },
-    {
-      icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/c/c-original.svg",
-      name: "C"
-    },
-    {
-      icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg",
-      name: "Java"
-    },
-    {
-      icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg",
-      name: "Python"
     }
     
   ];
@@ -637,28 +625,36 @@ const handleBackToPortfolio = () => {
       <main>
         <section id="home" className="min-h-screen flex items-center px-8 bg-black">
           <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-8">
-            <div className="space-y-4">
-                <motion.p 
-                  className="text-3xl font-semibold text-[#fff]"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.2 }}
-                >
-                  Game Developer
-                </motion.p>
-              </div>
-              <motion.h1 
-                className="text-5xl font-bold text-white"
+            <div className="space-y-8 -mt-16">
+            {/* Move this block to the top */}
+            <div className="space-y-2 mb-8">
+              <motion.p 
+                className="text-3xl font-semibold text-[#fff]"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
+                transition={{ duration: 0.5, delay: 0.1 }}
               >
-                <span className="text-white">Hi, I'm </span>
-                <span className="text-[#ff004f]">Anjaiah Chowdary M </span>
-                <span className="text-white">From India</span>
-                {/* Hi, I'm Anjaiah Chowdary M From India */}
+                Game Developer
+              </motion.p>
+              <motion.h1 
+                className="text-5xl font-bold text-white leading-tight"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+              >
+                <span className="block">Hi, I'm</span>
+                <span className="block text-[#ff004f]">Anjaiah Chowdary M</span>
+                <span className="block">From India</span>
               </motion.h1>
+              <motion.p
+                className="text-2xl font-bold text-[#ff004f] mt-2"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+              >
+                UEFN games contributed 5 Million minutes playtime
+              </motion.p>
+            </div>
               
               <motion.div 
                 className="flex gap-4"
@@ -733,117 +729,101 @@ const handleBackToPortfolio = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              <SubSectionButton section="about" subsection="skills" label="Skills" />
-              <SubSectionButton section="about" subsection="experience" label="Experience" />
+              <SubSectionButton section="about" subsection="skills" label="Skills & Experience" />
               <SubSectionButton section="about" subsection="education" label="Education" />
             </motion.div>
             <AnimatePresence mode="wait">
               {activeSubSection.about === 'skills' && (
                 <motion.div
-                  key="skills" // Unique key to reset animation
-                  className="grid grid-cols-1 md:grid-cols-2 gap-6"
+                  key="Skills & Experience" // Unique key to reset animation
+                  className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start w-full"
                   initial="hidden"
                   animate="visible"
                   exit="hidden"
                   variants={skillsVariants}
                 >
-                  {/* Skills Content */}
-                  <motion.div 
-                    className="bg-gray-900 p-6 rounded-lg transform hover:scale-105 transition-all duration-300"
-                    variants={itemVariants}
-                  >
-                    {/* Title Section with Left-Aligned Icon */}
-                    <div className="flex items-center justify-center gap-3 mb-6">
-                      <Code className="w-8 h-8 text-[#ff004f] animate-bounce" />
-                      <h4 className="text-2xl font-semibold text-white">Programming Languages</h4>
-                    </div>
-
-                    {/* Programming Icons Grid with Continuous Animation */}
-                    <div className="grid grid-cols-3 gap-6 mt-6">
-                      {programmingIcons.map((lang, index) => (
-                        <motion.div 
-                          key={lang.name} 
-                          className="flex flex-col items-center"
-                          animate={{ y: [-5, 5, -5] }} // Moves up and down
-                          transition={{ 
-                            duration: 1.5, // Adjust speed
-                            repeat: Infinity, // Infinite loop
-                            repeatType: "reverse", // Smooth back and forth animation
-                            delay: index * 0.2 // Staggered effect
-                          }}
-                        >
-                          <img
-                            src={lang.icon}
-                            alt={lang.name}
-                            className="w-16 h-16 mb-2 hover:scale-110 transition-transform duration-300"
-                          />
-                          <span className="text-gray-300 text-sm">{lang.name}</span>
-                        </motion.div>
-                      ))}
-                    </div>
-                  </motion.div>
-
-                  <motion.div 
-                    className="bg-gray-900 p-6 rounded-lg transform hover:scale-105 transition-all duration-300"
-                    variants={itemVariants}
-                  >
-                    {/* Title Section with Left-Aligned Icon */}
-                    <div className="flex items-center justify-center gap-3 mb-6">
-                      <Gamepad2 className="w-6 h-6 text-[#ff004f] animate-pulse" />
-                      <h4 className="text-2xl font-semibold text-white">Game Engines</h4>
-                    </div>
-
-                    {/* Game Engine Icons Grid with Continuous Animation */}
-                    <div className="grid grid-cols-3 gap-6 mt-6">
-                      {gameEngineIcons.map((engine, index) => (
-                        <motion.div 
-                          key={engine.name} 
-                          className="flex flex-col items-center"
-                          animate={{ scale: [1, 1.1, 1] }} // Pulse effect
-                          transition={{ 
-                            duration: 1.2, // Adjust speed
-                            repeat: Infinity, // Infinite loop
-                            repeatType: "reverse", // Smooth scaling back and forth
-                            delay: index * 0.2 // Stagger effect for smoother animation
-                          }}
-                        >
-                          <img
-                            src={engine.icon}
-                            alt={engine.name}
-                            className="w-16 h-16 mb-2 hover:scale-110 transition-transform duration-300 filter invert"
-                          />
-                          <span className="text-white text-sm">{engine.name}</span>
-                        </motion.div>
-                      ))}
-                    </div>
-                  </motion.div>
-
-                </motion.div>
-              )}
-
-              {activeSubSection.about === 'experience' && (
-                <motion.div
-                  key="experience" // Unique key
-                  className="space-y-6"
-                  initial="hidden"
-                  animate="visible"
-                  exit="hidden"
-                  variants={experienceVariants}
-                >
-                  <div className="flex flex-col items-center gap-6 mt-6">
-                    {experienceDetails.map((exp, index) => (
+                  {/* Left: Skills */}
+                    <div className="flex flex-col gap-6 w-full">
                       <motion.div 
-                        key={index} 
-                        className="bg-gray-900 p-6 rounded-lg shadow-lg w-full max-w-2xl"
-                        variants={experienceVariants} 
+                        className="bg-gray-900 p-6 rounded-lg w-full transform hover:scale-105 transition-all duration-300"
+                        variants={itemVariants}
                       >
-                        <h3 className="text-2xl font-bold text-white mb-2">{exp.position}</h3>
-                        <p className="text-[#ababab] mb-2">{exp.company}</p>
-                        <p className="text-[#ff004f] mb-2">{exp.duration}</p>
-                        <p className="text-gray-300">{exp.description}</p>
+                        <div className="flex items-center gap-3 mb-6">
+                          <Code className="w-8 h-8 text-[#ff004f] animate-bounce" />
+                          <h4 className="text-2xl font-semibold text-white">Programming Languages</h4>
+                        </div>
+                        <div className="grid grid-cols-3 gap-6 mt-6">
+                          {programmingIcons.map((lang, index) => (
+                            <motion.div 
+                              key={lang.name} 
+                              className="flex flex-col items-center"
+                              animate={{ y: [-5, 5, -5] }}
+                              transition={{ 
+                                duration: 1.5,
+                                repeat: Infinity,
+                                repeatType: "reverse",
+                                delay: index * 0.2
+                              }}
+                            >
+                              <img
+                                src={lang.icon}
+                                alt={lang.name}
+                                className="w-16 h-16 mb-2 hover:scale-110 transition-transform duration-300"
+                              />
+                              <span className="text-gray-300 text-sm">{lang.name}</span>
+                            </motion.div>
+                          ))}
+                        </div>
                       </motion.div>
-                    ))}
-                  </div>
+
+                      {/* Game Engines */}
+                      <motion.div 
+                        className="bg-gray-900 p-6 rounded-lg w-full transform hover:scale-105 transition-all duration-300"
+                        variants={itemVariants}
+                      >
+                        <div className="flex items-center gap-3 mb-6">
+                          <Gamepad2 className="w-6 h-6 text-[#ff004f] animate-pulse" />
+                          <h4 className="text-2xl font-semibold text-white">Game Engines</h4>
+                        </div>
+                        <div className="grid grid-cols-3 gap-6 mt-6">
+                          {gameEngineIcons.map((engine, index) => (
+                            <motion.div 
+                              key={engine.name} 
+                              className="flex flex-col items-center"
+                              animate={{ scale: [1, 1.1, 1] }}
+                              transition={{ 
+                                duration: 1.2,
+                                repeat: Infinity,
+                                repeatType: "reverse",
+                                delay: index * 0.2
+                              }}
+                            >
+                              <img
+                                src={engine.icon}
+                                alt={engine.name}
+                                className="w-16 h-16 mb-2 hover:scale-110 transition-transform duration-300 filter invert"
+                              />
+                              <span className="text-white text-sm">{engine.name}</span>
+                            </motion.div>
+                          ))}
+                        </div>
+                      </motion.div>
+                    </div>
+                    {/* Right: Experience */}
+                    <div className="flex flex-col gap-6 w-full">
+                      {experienceDetails.map((exp, index) => (
+                        <motion.div 
+                          key={index} 
+                          className="bg-gray-900 p-6 rounded-lg shadow-lg w-full"
+                          variants={experienceVariants} 
+                        >
+                          <h3 className="text-2xl font-bold text-white mb-2">{exp.position}</h3>
+                          <p className="text-[#ababab] mb-2">{exp.company}</p>
+                          <p className="text-[#ff004f] mb-2">{exp.duration}</p>
+                          <p className="text-gray-300">{exp.description}</p>
+                        </motion.div>
+                      ))}
+                    </div>
                 </motion.div>
               )}
 
