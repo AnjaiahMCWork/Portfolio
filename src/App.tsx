@@ -11,6 +11,7 @@ import {
 import { projectsData } from "./data/projectsData"; // Import the data
 import { Project } from "./types"; // Correct path (go back one level)
 import toast, { Toaster } from "react-hot-toast";
+import ResumePDF from './assets/AnjaiahUEFNGameDev.pdf';
 
 
 function App() {
@@ -667,7 +668,7 @@ const handleBackToPortfolio = () => {
               >
                 <div className="flex flex-col items-start gap-4">
                   <a
-                    href="/AnjaiahGameDev.pdf"
+                    href={ResumePDF}
                     download
                     className="flex items-center gap-2 bg-[#ff004f] hover:bg-[#ff004f]/80 text-white px-6 py-3 rounded-lg transition-all duration-300 transform hover:scale-105"
                   >
@@ -1036,7 +1037,7 @@ const handleBackToPortfolio = () => {
                       <FontAwesomeIcon icon={faGithub} className="text-[#ababab] hover:text-[#ff004f]" size="3x" />
                     </a>
                     <a
-                      href="/AnjaiahGameDev.pdf"
+                      href={ResumePDF}
                       target="_blank"
                       className="inline-block bg-[#ff004f] px-6 py-3 rounded-lg hover:bg-[#ff6b7f] transition-colors duration-300 text-white"
                     >
