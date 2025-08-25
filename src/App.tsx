@@ -646,14 +646,14 @@ const handleBackToPortfolio = () => {
                 <span className="block text-[#ff004f]">Anjaiah Chowdary M</span>
                 <span className="block">From India</span>
               </motion.h1>
-              <motion.p
+              {/* <motion.p
                 className="text-2xl font-bold text-[#ff004f] mt-2"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.3 }}
               >
                 UEFN games contributed 5 Million minutes playtime
-              </motion.p>
+              </motion.p> */}
             </div>
               
               <motion.div 
